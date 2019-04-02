@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Poetry Generator</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="haiku.js"></script>
+    </head>
+    <body background="../assets/background.jpg">
+        <table cols="2" align="center" width="40%" bgcolor="white" rules="cols" cellpadding="10">
+            <tr align="center">
+                <td width="20%"><a href="main.html">Home</a></td>
+                <td width="20%"><a href="haiku.html">Haiku</a></td>
+            </tr>
+        </table>
+        <h1>Haiku Generator</h1>
+        <label for="subjectInput">Enter a one syllable word to use in the haiku:</label>
+        <input id="subjectInput" type="text" value=""/>
+        <button onClick="generateHaiku()">Generate New Haiku</button>
+        <h3 id="line1" align="center" style="display: none">line 1</h3>
+        <h3 id="line2" align="center" style="display: none">line 2</h3>
+        <h3 id="line3" align="center" style="display: none">line 3</h3>
+    </body>
+</html>

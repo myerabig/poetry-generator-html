@@ -14,11 +14,55 @@
             </tr>
         </table>
         <h1>Haiku Generator</h1>
-        <label for="subjectInput">Enter a one syllable word to use in the haiku:</label>
-        <input id="subjectInput" type="text" value=""/>
-        <button onClick="generateHaiku()">Generate New Haiku</button>
-        <h3 id="line1" align="center" style="display: none">line 1</h3>
-        <h3 id="line2" align="center" style="display: none">line 2</h3>
-        <h3 id="line3" align="center" style="display: none">line 3</h3>
+        <table align="center" cols="2" rules="none" cellspacing="10" cellpadding="15">
+            <tr align="center" valign="center">
+                <td width="40%">
+                    <label for="subjectInput">Enter a one syllable word to use in the haiku:</label>
+                    <input id="subjectInput" type="text" value=""/>
+                    <br/>
+                    <br/>
+                    <label for="repeatInput">Enter the number of haikus to be generated:</label>
+                    <select id="repeatInput">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <button onClick="generateHaiku()">Generate New Haiku</button>
+                </td>
+                <td width="60%">
+                    <h3 class="line1" align="center" style="display: none">line 1</h3>
+                    <h3 class="line2" align="center" style="display: none">line 2</h3>
+                    <h3 class="line3" align="center" style="display: none">line 3</h3>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <h3 class="line1" align="center" style="display: none">line 1</h3>
+                    <h3 class="line2" align="center" style="display: none">line 2</h3>
+                    <h3 class="line3" align="center" style="display: none">line 3</h3>
+                </td>
+                <td>
+                    <h3 class="line1" align="center" style="display: none">line 1</h3>
+                    <h3 class="line2" align="center" style="display: none">line 2</h3>
+                    <h3 class="line3" align="center" style="display: none">line 3</h3>
+                </td>
+            </tr>
+            <tr align="center">
+                <td>
+                    <h3 class="line1" align="center" style="display: none">line 1</h3>
+                    <h3 class="line2" align="center" style="display: none">line 2</h3>
+                    <h3 class="line3" align="center" style="display: none">line 3</h3>
+                </td>
+                <td>
+                    <h3 class="line1" align="center" style="display: none">line 1</h3>
+                    <h3 class="line2" align="center" style="display: none">line 2</h3>
+                    <h3 class="line3" align="center" style="display: none">line 3</h3>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>

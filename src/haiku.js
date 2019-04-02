@@ -1,6 +1,7 @@
 var randomNumber;
 var type;
 var subject;
+var repeat;
 
 const connectingWords = ["the"];
 const oneSyllableNoun = ["cat", "dog", "life", "love", "world", "you", "fish", "man", "king", "ice", "tree", "month", "death", "time", "bee", "air", "ant", "star", "mouth", "soul", "age", "duck", "foot", "dream", "rain", "cake", "fruit", "rat", "worm", "loaf", "clock", "spring", "north", "bear", "snail"];
@@ -15,14 +16,17 @@ const threeSyllableAdjective = ["important", "dangerous", "musical", "innocent",
 
 function generateHaiku(){
     subject = document.getElementById("subjectInput").value;
+    repeat = document.getElementById("repeatInput").value;
 
-    document.getElementById("line1").innerHTML = fiveSyllables();
-    document.getElementById("line2").innerHTML = sevenSyllables();
-    document.getElementById("line3").innerHTML = fiveSyllables();
+    for(let i = 0; i < repeat; i++){
+        document.getElementsByClassName("line1")[i].innerHTML = fiveSyllables();
+        document.getElementsByClassName("line2")[i].innerHTML = sevenSyllables();
+        document.getElementsByClassName("line3")[i].innerHTML = fiveSyllables();
 
-    document.getElementById("line1").style = "display: block";
-    document.getElementById("line2").style = "display: block";
-    document.getElementById("line3").style = "display: block";
+        document.getElementsByClassName("line1")[i].style = "display: block";
+        document.getElementsByClassName("line2")[i].style = "display: block";
+        document.getElementsByClassName("line3")[i].style = "display: block";
+    }
 }
 
 function getConnectingWord(){

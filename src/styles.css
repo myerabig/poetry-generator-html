@@ -1,13 +1,36 @@
+@font-face{
+    font-family: Lemon Jelly;
+    src: url("../assets/LemonJelly.ttf");
+}
+@font-face{
+    font-family: American Purpose;
+    src: url("../assets/AmericanPurpose.otf");
+}
+
+html {
+    background: url("../assets/background.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
 *{
-    font-family: "Trebuchet MS";
     color: #ff356b;
+    font-family: American Purpose;
 }
 
 h1{
     text-align: center;
-    font-size: 48px;
+    font-size: 54px;
+    font-family: Lemon Jelly;
 }
 
 .line{
     text-align: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+.menuItem:hover{
+    background-color: white;
 }

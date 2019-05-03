@@ -2,6 +2,7 @@ var letter;
 var subject;
 var word;
 var randomNumber;
+var line;
 
 const a = ["Aardvark", "Antelope", "Abandoned", "Abyss", "Abbreviated", "Abdomen", "Abducted", "Accident", "Accountability", "Accuracy", "Acids", "Acorn", "Accent", "Amazon", "Amplified", "Amateur", "Amazing", "Ancient", "Angel", "Annoyed", "Apology"];
 const b = ["Bee", "Bumbling", "Building", "Ball", "Big", "Bamboo", "Bald", "Banjo", "Baguette", "Bribery", "Bricks", "Bold", "Ballet", "Ballad", "Beeswax", "Bed", "Books", "Bouquet", "Boxcar"];
@@ -9,34 +10,39 @@ const c = ["Cat", "Car", "Caffeinated", "Camels", "Canal", "Cannon", "Cargo", "C
 const d = ["Darkness", "Daily", "Debts", "Decay", "Disc", "Doughnut", "Doubt", "Duet", "Dying", "Dandelion", "Dancer", "Denim", "Deserted", "Dessert", "Devoured", "Ducks", "Dog", "Duffel", "Dream"];
 const e = ["Early", "Eaten", "Egg", "Elder", "Eagle", "Erased", "Every", "Expired", "Earbuds", "Edible", "Emerging", "Energetic", "Existential", "Eyeball", "Eastern", "Economy", "Ectoplasm", "Embassy"];
 const f = ["Favor", "Fairy", "Fearful", "Fences", "Fancy", "Flame", "Fudge", "Fake", "Feasible", "Fisherman", "Firm", "Floating", "Flowers", "Flute", "Flying", "Footprint", "Fussy"];
-const g = [];
-const h = [];
-const i = [];
-const j = [];
-const k = [];
-const l = [];
-const m = [];
-const n = [];
-const o = [];
-const p = [];
-const q = [];
-const r = [];
-const s = [];
-const t = [];
-const u = [];
-const v = [];
-const w = [];
-const x = [];
-const y = [];
-const z = [];
+const g = ["Gallon", "Gravity", "Graduate", "Glare", "Growing", "Governor", "Great", "Glove", "Glue", "Godly", "Ghost", "Gesture", "Garbage", "Guitar", "Genuine", "Guard", "Gloomy", "Galaxy", "Garlic"];
+const h = ["Honorary", "Heavy", "Habitat", "Health", "Hierarchy", "Haircut", "Horoscope", "Hero", "Helicopter", "Hypnotized", "Hurtful", "Hardware", "Helmet", "Hallway", "Huge", "Humorous", "Hope", "Hotdog"];
+const i = ["Important", "Innovation", "Ideology", "Infinite", "Incredible", "Inspiration", "Instinct", "Improvement", "Imagery", "Instrument", "Industrial", "Icy", "Investigation", "Irony", "Island"];
+const j = ["Jail", "Jester", "Jaw", "Job", "Journal", "Jumping", "Judgment", "Jealous", "Jungle", "Justice", "Junior", "Joystick", "Jacket", "Jewel", "Joke"];
+const k = ["Kicking", "Knowledge", "Key", "Knee", "Kitchen", "Knitting", "King", "Kneeling"];
+const l = ["Landowner", "Loose", "Lamb", "Location", "Lifestyle", "Leader", "Lawyer", "License", "Laundry", "Literature", "Leftovers", "Lemon", "Loud", "Lengthy", "Ladder", "Lodge", "Lunch", "Loyal", "Land"];
+const m = ["Monopoly", "Motorcycle", "Mixture", "Mythical", "Mysterious", "Mathematics", "Miserable", "Midnight", "Master", "Meaningful", "Muscle", "Metallic", "Medieval", "Mountain", "Museum", "Monster", "Memory"];
+const n = ["Normal", "Notebook", "Nervous", "Number", "Neutral", "Northern", "Necklace", "Nuclear", "Needle", "Novel", "Noble", "Network", "Nomination", "Neighbor", "Nightmare", "Natural", "Noise", "Negative"];
+const o = ["Overall", "Outline", "Opera", "Orbit", "Operation", "Obstacle", "Occupied", "Organized", "Overwhelming", "Opponent", "Owl", "Opposite", "Office", "Orange", "Observation", "Original", "Old"];
+const p = ["Profound", "Precedent", "Presidential", "Punishment", "Personality", "Paper", "Professor", "Polite", "Perception", "Partnership", "Planet", "Publisher", "Paid", "Program", "Panicked"];
+const q = ["Question", "Quality", "Quiet", "Quarter", "Queue", "Quaint", "Qualification", "Quotation", "Quarrel", "Queen"];
+const r = ["Representative", "Replaced", "Runner", "Railroad", "Report", "Redeemed", "Rough", "Requirement", "Romantic", "Research", "Recycled", "Ruined", "Reinforcement", "Resource", "Radiation", "Rescued", "Reality"];
+const s = ["Steam", "Size", "Suspected", "Sketch", "Sunday", "Sickness", "Silence", "Serious", "Sensation", "Smooth", "Situation", "Separate", "Snake", "Sequence", "Suppressed", "Specimen", "Scream", "Speaker"];
+const t = ["Thinking", "Tragedy", "Thoughtful", "Tower", "Tourist", "Threatening", "Tradition", "Trait", "Taxi", "Talking", "Tired", "Temperature", "Turkey", "Tactic", "Torch", "Texture", "Truthful"];
+const u = ["Unfair", "Unlawful", "Uniform", "Unity", "Unanimous", "Unique", "Urgency", "Unfortunate", "Umbrella", "Update", "User", "Understanding", "Unpleasant", "Uncertain"];
+const v = ["Vision", "Vain", "Visual", "Vacuum", "Virus", "Vegetarian", "Vague", "Valid", "Violation", "Velvet", "Vehicle", "Visible", "Vegetation", "Volume", "Verdict", "Voice", "Villain", "Voyage"];
+const w = ["Worn", "Wilderness", "Wage", "Waist", "Willpower", "Woman", "Whisper", "Welcoming", "Wardrobe", "Weakness", "Wolf", "Worry", "Winter", "Wrestler", "Walking", "Waiter", "Withdrawal", "Witness", "Water"];
+const x = ["X-ray", "Xylophone"];
+const y = ["Year", "Youth", "Young", "Yard", "Yearning", "Yam", "Yak", "Yesterday", "Yardstick", "Yacht", "Yolk", "Yearbook", "Yummy", "Yourself", "Yielding", "Yogurt", "Yellow"];
+const z = ["Zero", "Zone", "Zebra", "Zipper", "Zombie", "Zeugma"];
 
 function generateAcrostic(){
     subject = document.getElementById("subjectInput").value;
+    lines = document.getElementsByClassName("line");
 
-    for(i = 0; i < subject.length; i++){
+    for(let i = 0; i < lines.length; i++){
+        lines[i].innerHTML = "";
+    }
+
+    for(let i = 0; i < subject.length; i++){
         letter = subject.slice(i, i + 1).toLowerCase();
         checkLetter();
-        document.getElementsByClassName("line")[i].innerHTML = word;
+        lines[i].innerHTML = word;
     }
 }
 
@@ -118,6 +124,9 @@ function checkLetter(){
     }
     if(letter == 'z'){
         word = getZ();
+    }
+    if(letter == ' '){
+        word = "<br/>"
     }
 }
 

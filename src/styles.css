@@ -23,14 +23,30 @@ h1{
     font-family: Lemon Jelly;
 }
 
-.line{
-    text-align: left;
-}
-
 a{
     text-decoration: none;
 }
 
+.line{
+    text-align: left;
+}
+
+.lines{
+    text-align: center;
+}
+
 .menuItem:hover{
     background-color: white;
+}
+
+.sentence{
+    text-align: center;
+}
+
+#title{
+    text-align: center;
+}
+
+#author{
+    text-align: center;
 }

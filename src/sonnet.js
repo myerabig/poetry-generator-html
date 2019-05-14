@@ -10,31 +10,26 @@ var rhyme;
 var firstWord;
 var currentRhyme;
 
-var A = [];
-var B = [];
-var C = [];
-var D = [];
-var E = [];
-var F = [];
-var G = [];
+var A, B, C, D, E, F, G;
 
-var rhyme1 = ["bat", "cat", "chat", "gnat", "mat", "pat", "rat"];
-var rhyme2 = ["bee", "knee", "fee", "flea", "pea", "sea", "spree"];
-var rhyme3 = ["neigh", "play", "sleigh", "spray", "tray"];
-var rhyme4 = ["chime", "climb", "dime", "lime", "rhyme", "mime", "slime"];
-var rhyme5 = ["blend", "end", "friend", "trend"];
-var rhyme6 = ["dawn", "fawn", "lawn", "prawn", "pawn", "swan", "yawn"];
+var rhyme1 = [];
+var rhyme2 = [];
+var rhyme3 = [];
+var rhyme4 = [];
+var rhyme5 = [];
+var rhyme6 = [];
 var rhyme7 = [];
-var rhyme8 = ["banshee", "birch tree", "degree", "goatee", "iced tea", "snow pea"];
-var rhyme9 = ["airway", "ballet", "birthday", "blue jay", "bouquet", "buffet", "cafe", "display", "doorway", "monday", "sorbet"];
-var rhyme10 = ["airplane", "birdbrain", "champagne", "domain", "fast lane", "migraine", "refrain", "terrain"];
-var rhyme11 = ["accent", "ascent", "cement", "descent", "event", "indent", "percent", "segment"];
-var rhyme12 = ["boyfriend", "dead end", "godsend", "weekend"];
+
+var rhyme8 = [];
+var rhyme9 = [];
+var rhyme10 = [];
+var rhyme11 = [];
+var rhyme12 = [];
 var rhyme13 = [];
 var rhyme14 = [];
 
-var oneSyllableRhymeSets = [rhyme1, rhyme2, rhyme3, rhyme4, rhyme5, rhyme6, rhyme7];
-var twoSyllableRhymeSets = [rhyme8, rhyme9, rhyme10, rhyme11, rhyme12, rhyme13, rhyme14];
+var oneSyllableRhymeSets = [];
+var twoSyllableRhymeSets = [];
 
 const noun = ["cat", "dog", "life", "love", "world", "you", "fish", "man", "king", "ice", "tree", "month", "death", "time", "bee", "air", "ant", "star", "mouth", "soul", "age", "duck", "foot", "dream", "rain", "cake", "fruit", "rat", "worm", "loaf", "clock", "spring", "north", "bear", "snail", "kitty", "puppy", "actor", "artist", "blindness", "darkness", "mistake", "nonsense", "subway", "arrow", "apple", "cabbage", "elbow", "helmet", "lobster", "monster", "napkin", "office", "dragon", "forest", "motor", "photo", "thunder", "bagel", "climate", "cocoa", "decay", "flavor", "hero", "odor", "razor", "target", "regret", "turkey", "curtain", "ticket", "goodbye", "orange", "umbrella", "candlestick", "family", "banana", "happiness", "animal", "adventure", "energy", "history", "holiday", "memory", "media", "pollution", "radio", "melody", "mercury", "library", "oxygen", "mystery", "halloween", "skeleton", "computer", "gravity", "solution", "government", "anything", "accident", "beginning", "boulevard", "punishment", "hydrogen", "confusion", "amusement", "afterthought"];
 const adjective = ["green", "big", "small", "ill", "long", "mad", "bored", "wise", "huge", "quick", "red", "odd", "rich", "shy", "brave", "calm", "kind", "cold", "warm", "rough", "loud", "swift", "light", "weak", "cheap", "young", "short", "cute", "quaint", "smart", "bad", "cruel", "smooth", "foolish", "peaceful", "rainy", "common", "secret", "broken", "evil", "joyful", "simple", "better", "nuclear", "hungry", "solid", "thirsty", "awkward", "worthless", "heavy", "liquid", "fancy", "nervous", "honest", "eager", "pretend", "solo", "purple", "thoughtful", "lucky", "spiky", "grouchy", "icky", "naive", "sassy", "steady", "disturbed", "faithful", "slimy", "legal", "dapper", "empty", "moldy", "important", "dangerous", "musical", "innocent", "serious", "curious", "difficult", "radical", "excited", "generous", "powerful", "colorful", "infinite", "glorious", "edible", "ultimate", "attractive", "effortless", "aggressive", "athletic", "determined", "united", "qualified", "radical", "average"];
@@ -67,8 +62,9 @@ function generateSonnet(){
 }
 
 function generateShakespearean(){
+    setDefaults();
+
     lines = document.getElementsByClassName("lines");
-    currentRhyme = 'A';
 
     for(let i = 0; i < 14; i++){
         if(i == 0 || i == 2){
@@ -93,36 +89,59 @@ function generateShakespearean(){
             currentRhyme = 'G';
         }
 
+        if(i % 4 == 0){
+            syllables = Math.floor(Math.random() * 2) + 1;
+        }
+
         randomNumber = Math.floor(Math.random() * 4) + 1;
 
-        if(randomNumber == 1){
-            line = "The " + getTwoSyllable(3) + " " + getThreeSyllable(1) + " " + getTwoSyllable(2) + " " + getRhyme(currentRhyme, 2);
+        if(syllables == 1){
+            if(randomNumber == 1){
+                line = "What if " + getOneSyllable(1) + " " + getTwoSyllable(2) + " the " + getThreeSyllable(3) + " " + getRhyme(currentRhyme, 1) + "?";
+            }
+            else if(randomNumber == 2){
+                firstWord = getOneSyllable(1);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getOneSyllable(2) + " my " + getOneSyllable(3) + " " + getOneSyllable(1) + ", " + getTwoSyllable(2) + " my " + getOneSyllable(3) + " " + getRhyme(currentRhyme, 1);
+            }
+            else if(randomNumber == 3){
+                line = "I wish the " + getTwoSyllable(3) + " " + getTwoSyllable(1) + " was my " + getRhyme(currentRhyme, 1);
+            }
+            else if(randomNumber == 4){
+                firstWord = getTwoSyllable(1);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getThreeSyllable(2) + ", " + getThreeSyllable(1) + " " + getOneSyllable(2) + " the " + getRhyme(currentRhyme, 1);
+            }
         }
-        else if(randomNumber == 2){
-            firstWord = getThreeSyllable(3);
-            firstWord.charAt(0).toUpperCase();
-            line = firstWord + " " + getOneSyllable(1) + " is like " + getTwoSyllable(3) + " " + getRhyme(currentRhyme, 2);
-        }
-        else if(randomNumber == 3){
-            line = "What if " + getOneSyllable(1) + " " + getTwoSyllable(2) + " the " + getThreeSyllable(3) + " " + getRhyme(currentRhyme, 1) + "?";
-        }
-        else if(randomNumber == 4){
-            firstWord = getOneSyllable(1);
-            firstWord.charAt(0).toUpperCase();
-            line = firstWord + " " + getOneSyllable(2) + " my " + getOneSyllable(3) + " " + getOneSyllable(1) + ", " + getTwoSyllable(2) + " my " + getOneSyllable(3) + " " + getRhyme(currentRhyme, 1);
+
+        if(syllables == 2){
+            if(randomNumber == 1){
+                line = "The " + getTwoSyllable(3) + " " + getThreeSyllable(1) + " " + getTwoSyllable(2) + " " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 2){
+                firstWord = getThreeSyllable(3);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getOneSyllable(1) + " is like " + getTwoSyllable(3) + " " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 3){
+                line = "Watch as the " + getOneSyllable(3) + " " + getOneSyllable(1) + " " + getTwoSyllable(2) + " the " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 4){
+                line = "Why must " + getThreeSyllable(1) + " exist: for " + getRhyme(currentRhyme, 2) + "?";
+            }
         }
 
         lines[i].innerHTML = line;
     }
+    setDefaults();
 }
 
 function generatePetrarchan(){
     
 }
 
-function getRhyme(lett, sylls){
+function getRhyme(lett){
     letter = lett;
-    syllables = sylls;
 
     if(syllables == 1){
         randomNumber = Math.floor(Math.random() * oneSyllableRhymeSets.length);
@@ -451,4 +470,33 @@ function getThreeSyllable(type){
         randomNumber = Math.floor(Math.random() * threeSyllableAdjective.length);
         return threeSyllableAdjective[randomNumber];
     }
+}
+
+function setDefaults(){
+    A = [];
+    B = [];
+    C = [];
+    D = [];
+    E = [];
+    F = [];
+    G = [];
+
+    rhyme1 = ["bat", "cat", "chat", "gnat", "mat", "pat", "rat"];
+    rhyme2 = ["bee", "knee", "fee", "flea", "pea", "sea", "spree"];
+    rhyme3 = ["neigh", "play", "sleigh", "spray", "tray", "day"];
+    rhyme4 = ["chime", "climb", "dime", "lime", "rhyme", "mime", "slime"];
+    rhyme5 = ["blend", "end", "friend", "trend"];
+    rhyme6 = ["dawn", "fawn", "lawn", "prawn", "pawn", "swan", "yawn"];
+    rhyme7 = ["bait", "crate", "fate", "gate", "plate", "skate", "state", "weight"];
+
+    rhyme8 = ["banshee", "birch tree", "degree", "goatee", "iced tea", "snow pea"];
+    rhyme9 = ["airway", "ballet", "birthday", "blue jay", "bouquet", "buffet", "cafe", "display", "doorway", "monday", "sorbet"];
+    rhyme10 = ["airplane", "birdbrain", "champagne", "domain", "fast lane", "migraine", "refrain", "terrain"];
+    rhyme11 = ["accent", "ascent", "cement", "descent", "event", "indent", "percent", "segment"];
+    rhyme12 = ["boyfriend", "dead end", "godsend", "weekend"];
+    rhyme13 = ["cheapskate", "classmate", "debate", "estate", "floodgate", "heart rate", "home plate", "update"];
+    rhyme14 = ["bloodline", "canine", "decline", "design", "feline", "goldmine"];
+
+    oneSyllableRhymeSets = [rhyme1, rhyme2, rhyme3, rhyme4, rhyme5, rhyme6, rhyme7];
+    twoSyllableRhymeSets = [rhyme8, rhyme9, rhyme10, rhyme11, rhyme12, rhyme13, rhyme14];
 }

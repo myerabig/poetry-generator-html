@@ -133,11 +133,67 @@ function generateShakespearean(){
 
         lines[i].innerHTML = line;
     }
-    setDefaults();
 }
 
 function generatePetrarchan(){
-    
+    setDefaults();
+
+    for(let i = 0; i < 14; i++){
+        if(i == 0 || i == 3 || i == 4 || i == 7){
+            currentRhyme = 'A';
+        }
+        else if(i == 1 || i == 2 || i == 5 || i == 6){
+            currentRhyme = 'B';
+        }
+        else if(i == 8 || i == 10 || i == 12){
+            currentRhyme = 'C';
+        }
+        else{
+            currentRhyme = 'D';
+        }
+
+        if(i % 4 == 0){
+            syllables = Math.floor(Math.random() * 2) + 1;
+        }
+
+        randomNumber = Math.floor(Math.random() * 4) + 1;
+
+        if(syllables == 1){
+            if(randomNumber == 1){
+                line = "What if " + getOneSyllable(1) + " " + getTwoSyllable(2) + " the " + getThreeSyllable(3) + " " + getRhyme(currentRhyme, 1) + "?";
+            }
+            else if(randomNumber == 2){
+                firstWord = getOneSyllable(1);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getOneSyllable(2) + " my " + getOneSyllable(3) + " " + getOneSyllable(1) + ", " + getTwoSyllable(2) + " my " + getOneSyllable(3) + " " + getRhyme(currentRhyme, 1);
+            }
+            else if(randomNumber == 3){
+                line = "I wish the " + getTwoSyllable(3) + " " + getTwoSyllable(1) + " was my " + getRhyme(currentRhyme, 1);
+            }
+            else if(randomNumber == 4){
+                firstWord = getTwoSyllable(1);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getThreeSyllable(2) + ", " + getThreeSyllable(1) + " " + getOneSyllable(2) + " the " + getRhyme(currentRhyme, 1);
+            }
+        }
+        else if(syllables == 2){
+            if(randomNumber == 1){
+                line = "The " + getTwoSyllable(3) + " " + getThreeSyllable(1) + " " + getTwoSyllable(2) + " " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 2){
+                firstWord = getThreeSyllable(3);
+                firstWord.charAt(0).toUpperCase();
+                line = firstWord + " " + getOneSyllable(1) + " is like " + getTwoSyllable(3) + " " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 3){
+                line = "Watch as the " + getOneSyllable(3) + " " + getOneSyllable(1) + " " + getTwoSyllable(2) + " the " + getRhyme(currentRhyme, 2);
+            }
+            else if(randomNumber == 4){
+                line = "Why must " + getThreeSyllable(1) + " exist: for " + getRhyme(currentRhyme, 2) + "?";
+            }
+        }
+        lines[i].innerHTML = line;
+    }
 }
 
 function getRhyme(lett){
@@ -499,4 +555,15 @@ function setDefaults(){
 
     oneSyllableRhymeSets = [rhyme1, rhyme2, rhyme3, rhyme4, rhyme5, rhyme6, rhyme7];
     twoSyllableRhymeSets = [rhyme8, rhyme9, rhyme10, rhyme11, rhyme12, rhyme13, rhyme14];
+}
+
+function clearPage(){
+    lines = document.getElementsByClassName("lines");
+
+    for(let i = 0; i < lines.length; i++){
+        lines[i].innerHTML = "";
+    }
+
+    document.getElementById("title").innerHTML = "";
+    document.getElementById("author").innerHTML = "";
 }

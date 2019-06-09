@@ -19,9 +19,9 @@
         <h1 align="center">Sonnet Generator</h1>
         <center>
             <label for="sonnetType">Type of sonnet: </label>
-            <select id="sonnetType">
-                <option>Shakespearean</option>
-                <option>Petrarchan</option>
+            <select id="sonnetType" onChange="clearPage()">
+                <option value="Shakespearean">Shakespearean</option>
+                <option value="Petrarchan">Petrarchan</option>
             </select>
         </center>
         <br/>
@@ -29,7 +29,6 @@
         <br/>
         <h2 id="title"></h2>
         <h2 id="author"></h2>
-        <h2 id="test"></h2>
         <br/>
         <h3 class="lines"></h3>
         <h3 class="lines"></h3>
